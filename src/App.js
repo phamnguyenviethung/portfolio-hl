@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import Home from 'pages/home';
+import { ThemeProvider } from '@mui/material/styles';
+import { Container, CssBaseline } from '@mui/material';
+import background from 'img/background.svg';
+import Navbar from 'components/common/Navbar';
+import theme from 'app/theme';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Container
+        sx={{
+          backgroundImage: `url(${background})`,
+          height: '100vh',
+          width: '100%',
+        }}
+        maxWidth='xl'
+        disableGutters
+      >
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+        </Routes>
+      </Container>
+    </ThemeProvider>
   );
 }
 
