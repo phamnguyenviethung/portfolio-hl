@@ -1,28 +1,8 @@
 import { Box, Button, Grid, Link, Stack, Typography } from '@mui/material';
 import avatar from 'img/avatar.svg';
 import bgLogo from 'img/bgLogo.svg';
-import globe from 'img/globe.svg';
-import mail from 'img/mail.svg';
-import phone from 'img/phone.svg';
 import React from 'react';
-
-const contactItemList = [
-  {
-    type: 'text',
-    image: phone,
-    text: '(+84) 937 874 992',
-  },
-  {
-    type: 'text',
-    image: mail,
-    text: 'hoangloang511989@gmail.com',
-  },
-  {
-    type: 'link',
-    image: globe,
-    text: 'facebook.com/hoanglong5189',
-  },
-];
+import { contactItemList } from 'app/data';
 
 const ContactItem = ({ image, text, type }) => {
   return (

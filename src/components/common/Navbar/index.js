@@ -2,6 +2,7 @@ import React from 'react';
 import logo from 'img/logo.svg';
 import { Container, Stack, Divider } from '@mui/material';
 import { makeStyles, createStyles } from '@mui/styles';
+import { navItemList } from 'app/data';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -18,25 +19,6 @@ const useStyles = makeStyles(theme =>
     },
   })
 );
-
-const itemList = [
-  {
-    path: '/',
-    label: 'Home',
-  },
-  {
-    path: '/about',
-    label: 'About Me',
-  },
-  {
-    path: '/portfolio',
-    label: 'Portfolio',
-  },
-  {
-    path: '/contact',
-    label: 'Contact',
-  },
-];
 
 const NavItem = props => {
   return <p className={props.class}>{props.text}</p>;
@@ -80,7 +62,7 @@ const Navbar = () => {
           alignItems: 'center',
         }}
       >
-        {itemList.map((item, key) => (
+        {navItemList.map((item, key) => (
           <NavItem key={key} class={classes.navItem} text={item.label} />
         ))}
       </Stack>
