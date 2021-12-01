@@ -1,9 +1,9 @@
-import React from 'react';
-import logo from 'img/logo.svg';
-import { Container, Stack, Divider } from '@mui/material';
-import { makeStyles, createStyles } from '@mui/styles';
+import { Container, Divider, Stack } from '@mui/material';
+import { createStyles, makeStyles } from '@mui/styles';
 import { navItemList } from 'app/data';
-
+import logo from 'img/logo.svg';
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 const useStyles = makeStyles(theme =>
   createStyles({
     navItem: {
@@ -13,15 +13,34 @@ const useStyles = makeStyles(theme =>
       fontSize: '16px',
       lineHeight: '23px',
       cursor: 'pointer',
+      textDecoration: 'none',
       '&:hover': {
         color: theme.palette.brand.red,
       },
+    },
+    navItemActive: {
+      textTransform: 'uppercase',
+      color: theme.palette.brand.red,
+      fontWeight: '700',
+      fontSize: '16px',
+      lineHeight: '23px',
+      cursor: 'pointer',
+      textDecoration: 'none',
     },
   })
 );
 
 const NavItem = props => {
-  return <p className={props.class}>{props.text}</p>;
+  return (
+    <NavLink
+      to={props.path}
+      className={path =>
+        path.isActive ? props.class.navItemActive : props.class.navItem
+      }
+    >
+      {props.text}
+    </NavLink>
+  );
 };
 
 const Navbar = () => {
@@ -44,7 +63,18 @@ const Navbar = () => {
       maxWidth='xl'
       disableGutters={true}
     >
-      <img src={logo} alt='logo' style={{ height: '80px', width: '150px' }} />
+      <Link
+        to='/'
+        style={{
+          padding: 0,
+          margin: 0,
+          height: '100%',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <img src={logo} alt='logo' />
+      </Link>
       <Stack
         direction='row'
         divider={
@@ -63,7 +93,12 @@ const Navbar = () => {
         }}
       >
         {navItemList.map((item, key) => (
-          <NavItem key={key} class={classes.navItem} text={item.label} />
+          <NavItem
+            key={key}
+            class={classes}
+            text={item.label}
+            path={item.path}
+          />
         ))}
       </Stack>
     </Container>
