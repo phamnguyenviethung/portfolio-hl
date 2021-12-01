@@ -1,9 +1,11 @@
-import { Container, Divider, Stack } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Container, Divider, Stack, useMediaQuery } from '@mui/material';
 import { createStyles, makeStyles } from '@mui/styles';
 import { navItemList } from 'app/data';
 import logo from 'img/logo.svg';
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { navbarHeight } from 'app/data';
 const useStyles = makeStyles(theme =>
   createStyles({
     navItem: {
@@ -44,16 +46,18 @@ const NavItem = props => {
 };
 
 const Navbar = () => {
-  const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('lg'));
+  const classes = useStyles(matches);
   return (
     <Container
       sx={{
-        height: '100px',
-        background: ' rgba(5, 51, 36, 0.75)',
+        height: matches ? navbarHeight : `calc(${navbarHeight} - 30px)`,
+        background: matches ? ' rgba(5, 51, 36, 0.75)' : 'none',
         backdropFilter: 'blur(30px)',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        justifyContent: matches ? 'space-between' : 'center',
         padding: '14px 3%',
         // position: 'absolute',
         // top: '0',
@@ -92,14 +96,15 @@ const Navbar = () => {
           alignItems: 'center',
         }}
       >
-        {navItemList.map((item, key) => (
-          <NavItem
-            key={key}
-            class={classes}
-            text={item.label}
-            path={item.path}
-          />
-        ))}
+        {matches &&
+          navItemList.map((item, key) => (
+            <NavItem
+              key={key}
+              class={classes}
+              text={item.label}
+              path={item.path}
+            />
+          ))}
       </Stack>
     </Container>
   );

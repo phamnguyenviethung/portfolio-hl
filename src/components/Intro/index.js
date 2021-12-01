@@ -1,8 +1,17 @@
-import { Box, Button, Grid, Link, Stack, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  Link,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material';
 import avatar from 'img/avatar.svg';
 import bgLogo from 'img/bgLogo.svg';
 import React from 'react';
-import { contactItemList } from 'app/data';
+import { contactItemList, navbarHeight, navbarHeightMobile } from 'app/data';
 
 const ContactItem = ({ image, text, type }) => {
   return (
@@ -14,40 +23,60 @@ const ContactItem = ({ image, text, type }) => {
       />
       {type === 'link' ? (
         <Link
-          href={text}
+          href={'https://' + text}
           underline='always'
-          sx={{ color: '#e8e8e8', opacity: '0.5' }}
+          sx={{ color: '#e8e8e8', opacity: '0.5', whiteSpace: 'nowrap' }}
         >
           {text}
         </Link>
       ) : (
-        <p style={{ color: '#e8e8e8', opacity: '0.5' }}>{text}</p>
+        <p style={{ color: '#e8e8e8', opacity: '0.5', whiteSpace: 'nowrap' }}>
+          {text}
+        </p>
       )}
     </Stack>
   );
 };
 
 const Intro = () => {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('lg'));
+
   return (
     <>
-      <Grid container>
-        <Grid item lg={4}>
-          <Box sx={{ display: 'flex', justifyContent: 'flex-end' }} px='5px'>
-            <img
-              src={avatar}
-              alt='avatar'
-              style={{
-                height: '80%',
-              }}
-            />
+      <Grid
+        container
+        sx={{
+          height: `calc(100% - ${matches ? navbarHeight : navbarHeightMobile})`,
+        }}
+        spacing={2}
+      >
+        <Grid
+          item
+          xs={12}
+          md={12}
+          lg={4}
+          sx={{ width: '100%', height: '100%' }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%',
+            }}
+          >
+            <img src={avatar} alt='avatar' />
           </Box>
         </Grid>
         <Grid
           item
+          md={12}
           lg={8}
           sx={{
             position: 'relative',
             zIndex: 3,
+            display: matches ? 'flex' : 'none',
           }}
         >
           <Box
@@ -77,7 +106,7 @@ const Intro = () => {
             }}
           >
             <Stack direction='column' spacing={12}>
-              <Stack direction='column' spacing={2} sx={{ maxWidth: '32%' }}>
+              <Stack direction='column' spacing={2}>
                 <Typography
                   component='h3'
                   align='left'
@@ -139,6 +168,7 @@ const Intro = () => {
               </Button>
             </Stack>
             <Stack
+              zIndex='4'
               spacing={10}
               direction='row'
               justifyContent='center'
