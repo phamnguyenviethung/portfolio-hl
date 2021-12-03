@@ -1,9 +1,10 @@
 import Layout from 'components/common/Layout';
+import Intro from 'components/Intro';
 import React from 'react';
 import background from 'img/background.svg';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-const About = () => {
+const Portfolio = () => {
   const matches = useMediaQuery('(max-width:900px)');
   if (matches) {
     return <div>TODO mobile</div>;
@@ -18,9 +19,9 @@ const About = () => {
       disableGutters
       maxWidth='xl'
     >
-      TODO AboutS
+      TODO Portfolio
     </Layout>
   );
 };
 
-export default About;
+export default Portfolio;
