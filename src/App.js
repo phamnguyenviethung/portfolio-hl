@@ -21,6 +21,7 @@ import About from 'pages/about';
 import Contact from 'pages/contact';
 import Home from 'pages/home';
 import Portfolio from 'pages/portfolio';
+import { width } from '@mui/system';
 
 const navD = [
   { key: 1, to: '/', lb: 'HOME' },
@@ -36,7 +37,6 @@ const Btn = props => (
 function App() {
   const [o, setO] = useState(false);
   const matches = useMediaQuery('(max-width:900px)');
-
 
   const btnList = useMemo(
     () =>
@@ -75,7 +75,8 @@ function App() {
           <Toolbar
             sx={{
               height: { sx: '64px', md: '100px' },
-              backgroundColor: '#053324',
+              backgroundColor: '#0E352D',
+              backdropFilter: 'blur(30px)',
               justifyContent: matches ? 'space-between' : 'unset',
             }}
           >
@@ -163,12 +164,25 @@ function App() {
       )}
 
       {/* Main Route */}
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='about' element={<About />} />
-        <Route path='portfolio' element={<Portfolio />} />
-        <Route path='contact' element={<Contact />} />
-      </Routes>
+      <Box
+        sx={{
+          position: 'relative',
+          maxHeight: '100vh',
+          maxWidth: '100vw',
+          overflow: 'hidden',
+          height: '100vh',
+          width: '100vw',
+          overflowY: 'hidden',
+          overflowX: 'hidden',
+        }}
+      >
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='about' element={<About />} />
+          <Route path='portfolio' element={<Portfolio />} />
+          <Route path='contact' element={<Contact />} />
+        </Routes>
+      </Box>
     </>
   );
 }
