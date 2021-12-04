@@ -1,16 +1,14 @@
-import {
-  AppBar,
-  CardMedia,
-  CssBaseline,
-  Toolbar,
-  Typography,
-} from '@mui/material';
-import { Box } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
+import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
+import CardMedia from '@mui/material/CardMedia';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import GodDragonSvg from 'components/GodDragonSvg';
-import Logo from 'components/Logo';
-import { Fragment } from 'react';
 
 function Mobile() {
+  const move = useNavigate();
   return (
     <Box
       sx={{
@@ -76,12 +74,43 @@ function Mobile() {
             img: {
               height: '100%',
               width: 'auto',
+              marginRight: 6,
             },
+          },
+          '#c_more_about_me': {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           },
         }}
       >
         <div id='c_cover'>
-          <CardMedia component='img' src='img/cover.svg' />
+          <CardMedia component='img' src='img/cover_info.png' />
+        </div>
+
+        <div id='c_more_about_me'>
+          <Button
+            sx={{
+              textTransform: 'capitalize',
+              color: '#FFFFFF',
+              background: '#A32541',
+              boxShadow: '0px 4px 4px rgb(0 0 0 / 35%)',
+              borderRadius: '30px',
+              px: 4,
+              marginTop: 10,
+              '&:active, &:hover': {
+                background: '#A32541',
+              },
+            }}
+            onClick={() => move('about')}
+          >
+            More About Me
+          </Button>
         </div>
       </Box>
       <Typography
