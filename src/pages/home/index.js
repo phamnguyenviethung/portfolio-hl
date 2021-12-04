@@ -1,9 +1,11 @@
-import Layout from 'components/common/Layout';
-import Intro from 'components/Intro';
+// import Layout from 'components/common/Layout';
 import React from 'react';
-import background from 'img/background.svg';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import Mobile from './Mobile';
+import Destop from './Destop';
 
 const Home = () => {
+<<<<<<< HEAD
   return (
     <Layout
       sx={{
@@ -18,6 +20,13 @@ const Home = () => {
       <Intro />
     </Layout>
   );
+=======
+  const matches = useMediaQuery('(max-width:900px)');
+  if (matches) {
+    return <Mobile />;
+  }
+  return <Destop />;
+>>>>>>> origin/develop
 };
 
 export default Home;

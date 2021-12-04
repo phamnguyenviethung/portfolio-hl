@@ -81,7 +81,7 @@ const Navbar = () => {
         <img src={logo} alt='logo' />
       </Link>
       <Stack
-        direction='row'
+        // direction='row'
         divider={
           <Divider
             sx={{
