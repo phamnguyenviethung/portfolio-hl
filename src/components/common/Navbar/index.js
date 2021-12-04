@@ -59,6 +59,7 @@ const Navbar = () => {
         alignItems: 'center',
         justifyContent: matches ? 'space-between' : 'center',
         padding: '14px 3%',
+        zIndex: '98',
         // position: 'absolute',
         // top: '0',
         // right: '0',

@@ -10,6 +10,7 @@ const Home = () => {
         height: '100vh',
         width: '100%',
         backgroundImage: `url(${background})`,
+        mixBlendMode: 'multiply',
       }}
       disableGutters
       maxWidth='xl'

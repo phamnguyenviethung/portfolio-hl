@@ -5,6 +5,8 @@ import phone from 'img/phone.svg';
 export const EMAIL = 'hoanglong511989@gmail.com';
 export const PHONE_NUMBER = '(+84) 937 874 992';
 export const FACEBOOK_LINK = 'facebook.com/hoanglong5189/';
+export const NAME = 'Dinh Hoang Long';
+export const JOB_TITLE = 'graphics design';
 
 export const navbarHeight = '100px';
 export const navbarHeightMobile = '70px';

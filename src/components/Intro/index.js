@@ -85,7 +85,8 @@ const Intro = () => {
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center',
-              opacity: '0.12',
+              mixBlendMode: 'multiply',
+              opacity: 0.12,
               height: '100%',
               width: '100%',
               zIndex: 2,
@@ -103,6 +104,7 @@ const Intro = () => {
               justifyContent: 'center',
               height: '100%',
               flexDirection: 'column',
+              zIndex: 3,
             }}
           >
             <Stack direction='column' spacing={12}>
